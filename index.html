@@ -1,0 +1,410 @@
+<!doctype html>
+<html lang="de">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Mobile Systeme &ndash; Anton Kreß</title>
+
+    <meta name="description" content="MOBS Projekt"/>
+    <meta name="author" content="Anton Kreß"/>
+
+    <link rel="Stylesheet" href="assets/css.css"/>
+</head>
+
+<body>
+    <div class="Hintergrund-Text">
+        MOBS MachineTools
+    </div>
+
+    <ce-hauptmenü></ce-hauptmenü>
+
+    <template id="Hauptmenü">
+        <style>
+            div.MainGrid {
+                display: grid;
+                grid-template-columns: 1fr 8fr;
+                justify-content: center;
+                align-items: center; 
+                height: 100vh;
+                width: 100vw;
+            }
+
+            span.material-icons {
+                color: rgb(var(--farbe));
+            }
+
+            div.MenuButton {
+                height: 100%;
+                width: 100%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+
+            button.homebox {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                border: 3px solid rgb(var(--farbe));
+                border-radius: 10px;
+                height: 15vh;
+                background-color: rgb(0, 0, 0, 0);
+                width: auto;
+                aspect-ratio: 1 / 1;
+                font-size: 15vh;
+            }
+
+            button.homebox:hover {
+                background-color: rgba(var(--farbe),0.1);
+            }
+
+            div.MarginBox {
+                margin: 20px;
+            }
+
+            div.Content {
+                height: 100%;
+                width: 100%;
+                padding: 0px;
+                margin: 0px;
+            }
+            /*Google Icons - Lokal*/
+            @font-face {
+                font-family: 'Material Icons';
+                font-style: normal;
+                font-weight: 400;
+                src: url('./MaterialIcons-Regular.ttf') format('truetype');
+            }
+            .material-icons {
+                font-family: 'Material Icons';
+                font-size: 100%;
+                display: inline-block;
+                text-rendering: optimizeLegibility;
+                text-align: center;
+            }
+        </style>
+
+
+        <div class="MainGrid">
+            <div class="MenuButton">
+                <button class="homebox" id="HauptmenüButton"><span class="material-icons">home</span></button>
+            </div>
+            <div class="MarginBox">
+                <div class="Content">
+                    
+                    <!-- Custom Elements für Untermenüs --> 
+                    <ce-schaltflaechen></ce-schaltflaechen>
+                    <ce-farbschema></ce-farbschema>
+                </div>
+            </div>
+        </div>
+    </template>
+
+    <template id="Schaltflächen">
+        <style>
+            div.SchaltflächenGrid {
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+                grid-template-rows: repeat(3, 1fr);
+                grid-gap: 10px;
+                height: calc(100vh - 40px);
+                width: 100%;
+            }
+            button.box {
+                justify-content: center;
+                align-items: center;
+                box-sizing: border-box;
+                border: 3px solid rgb(var(--farbe));
+                border-radius: 10px;
+                background-color: rgb(0, 0, 0, 0);
+                width: 100%;
+                height: 100%;
+                padding: 0px;
+                margin: 0px;
+            }
+
+            button.box:hover {
+                background-color: rgba(var(--farbe),0.4);
+            }
+
+            /*Google Icons - Lokal*/
+            @font-face {
+                font-family: 'Material Icons';
+                font-style: normal;
+                font-weight: 400;
+                src: url('./MaterialIcons-Regular.ttf') format('truetype');
+            }
+            .material-icons {
+                font-family: 'Material Icons';
+                font-size: 15vh;
+                display: inline-block;
+                text-rendering: optimizeLegibility;
+                text-align: center;
+                color: rgb(var(--farbe));
+            }
+        </style>
+        <div class="SchaltflächenGrid">
+            <button class="box" id="RotationButton"><span class="material-icons">build</span></button>
+            <button class="box" id="MaschinendatenButton"><span class="material-icons">query_stats</span></button>
+            <button class="box"><span class="material-icons">format_list_bulleted</span></button>
+            <button class="box" id="FarbschemaButton"><span class="material-icons"">settings</span></button>
+            <button class="box"><span class="material-icons">shower</span></button>
+            <button class="box" id="SupportButton"><span class="material-icons">support_agent</span></button>
+            <button class="box"><span class="material-icons">help</span></button>
+            <button class="box"><span class="material-icons">lock</span></button>
+            <button class="box"><span class="material-icons">power_settings_new</span></button>
+        </div>
+    </template>
+
+    <template id="Farbschema">
+        <style>
+            div.VerticalGrid {
+                display: grid;
+                grid-template-rows: 1fr 4fr;
+                height: calc(100vh - 40px);
+                width: 100%;
+                justify-content: center;
+                align-items: center; 
+            }
+
+            div.HorizontalGrid {
+                display: grid;
+                grid-template-columns: repeat(6, 1fr);
+                grid-gap: 10px;
+                height: 70vh;
+                width: 70vw;
+            }
+
+            div.Überschrift {
+                color: rgb(var(--farbe));
+                position: relative;
+                height: 10vh;
+                width: 100%;
+                text-align: center;
+                font-size: 5vh;
+            }
+
+            .colorbox-blau {
+                background-color: #2B67C680;
+                border: 3px solid #2B67C6;
+                border-radius: 10px;
+            }
+            .colorbox-blau:hover {
+                background-color: #2B67C6;
+            }
+            .colorbox-orange {
+                background-color: #BE842B80;
+                border: 3px solid #BE842B;
+                border-radius: 10px;
+            }
+            .colorbox-orange:hover {
+                background-color: #BE842B;
+            }
+            .colorbox-türkis {
+                background-color: #2BC18680;
+                border: 3px solid #2BC186;
+                border-radius: 10px;
+            }
+            .colorbox-türkis:hover {
+                background-color: #2BC186;
+            }
+            .colorbox-grün {
+                background-color: #8ECE2C80;
+                border: 3px solid #8ECE2C;
+                border-radius: 10px;
+            }
+            .colorbox-grün:hover {
+                background-color: #8ECE2C;
+            }
+            .colorbox-gelb {
+                background-color: #EBEB2E80;
+                border: 3px solid #EBEB2E;
+                border-radius: 10px;
+            }
+            .colorbox-gelb:hover {
+                background-color: #EBEB2E;
+            }
+            .colorbox-lila {
+                background-color: #B029B080;
+                border: 3px solid #B029B0;
+                border-radius: 10px;
+            }
+            .colorbox-lila:hover {
+                background-color: #B029B0;
+            }
+        </style>
+        <div class="VerticalGrid">
+            <div class="Überschrift">
+                Bitte wählen Sie ein Farbschema.
+            </div>
+            <div class="HorizontalGrid">
+                <button class="colorbox-blau" id="btn-blau"></button>
+                <button class="colorbox-orange" id="btn-orange"></button>
+                <button class="colorbox-türkis" id="btn-türkis"></button>
+                <button class="colorbox-grün" id="btn-grün"></button>
+                <button class="colorbox-gelb" id="btn-gelb"></button>
+                <button class="colorbox-lila" id="btn-lila"></button>
+            </div>
+        </div>
+    </template>
+
+    <script>
+        class Hauptmenü extends HTMLElement {
+            constructor() {
+                super();
+                const templateContent = document
+                    .getElementById('Hauptmenü')
+                    .content
+                    .cloneNode(true);
+                this.attachShadow({ mode: 'open' })
+                    .appendChild(templateContent);
+
+                this.contentDiv = this.shadowRoot.querySelector('.Content')
+
+                this.homeMap = {'HauptmenüButton': 'ce-schaltflaechen'};
+            }
+
+            connectedCallback() {
+                this.renderMenu('ce-schaltflaechen')
+
+                Object.keys(this.homeMap).forEach((buttonId) => {
+                    const button = this.shadowRoot.getElementById(buttonId);
+                    if (button) {
+                        button.addEventListener('click', () => this.showMenu(buttonId));
+                        console.log(`EventListener gesetzt für: ${buttonId}`)
+                    }
+                });
+            }
+
+            disconnectedCallback() {
+                console.log('Hauptmenü wird geschlossen!');
+
+                Object.keys(this.homeMap).forEach((buttonId) => {
+                    const button = this.shadowRoot.getElementById(buttonId);
+                    if (button) {
+                        button.removeEventListener('click', () => this.showMenu(buttonId));
+                    }
+                });
+            }
+
+            renderMenu(menuTag) {
+                this.contentDiv.innerHTML = ''; // Vorherigen Inhalt entfernen
+                const menuElement = document.createElement(menuTag);
+                this.contentDiv.appendChild(menuElement);
+            }
+
+            showMenu(buttonId) {
+                const menuTag = this.homeMap[buttonId];
+                if (menuTag) {
+                    this.renderMenu(menuTag);
+                    console.log(`Wechsle zu Menü: ${menuTag}`);
+                } else {
+                    console.warn(`Kein Menü für Button mit ID ${buttonId} definiert.`);
+                }
+            }
+        }
+        customElements.define('ce-hauptmenü', Hauptmenü);
+
+
+        class Schaltflächen extends HTMLElement {
+            constructor() {
+                super();
+                const templateContent = document
+                    .getElementById('Schaltflächen')
+                    .content
+                    .cloneNode(true);
+                this.attachShadow({ mode: 'open' })
+                    .appendChild(templateContent);
+
+                this.schaltflächenDiv = this.shadowRoot.querySelector('.SchaltflächenGrid')
+
+                this.menuMap = {
+                    'FarbschemaButton': 'ce-farbschema'
+                }
+            };
+
+            connectedCallback() {
+                Object.keys(this.menuMap).forEach((buttonId) => {
+                    const button = this.shadowRoot.getElementById(buttonId);
+                    if (button) {
+                        button.addEventListener('click', () => this.showMenu(buttonId));
+                        console.log(`EventListener gesetzt für: ${buttonId}`)
+                    }
+                });
+            }
+            disconnectedCallback() {
+                Object.keys(this.menuMap).forEach((buttonId) => {
+                    const button = this.shadowRoot.getElementById(buttonId);
+                    if (button) {
+                        button.removeEventListener('click', () => this.showMenu(buttonId));
+                    }
+                });
+            }        
+            
+            renderMenu(menuTag) {
+                this.schaltflächenDiv.innerHTML = ''; // Vorherigen Inhalt entfernen
+                const menuElement = document.createElement(menuTag);
+                this.schaltflächenDiv.appendChild(menuElement);
+            }
+
+            showMenu(buttonId) {
+                const menuTag = this.menuMap[buttonId];
+                if (menuTag) {
+                    this.renderMenu(menuTag);
+                    console.log(`Wechsle zu Menü: ${menuTag}`);
+                } else {
+                    console.warn(`Kein Menü für Button mit ID ${buttonId} definiert.`);
+                }
+            }
+        }
+        customElements.define('ce-schaltflaechen', Schaltflächen);
+
+        class Farbschema extends HTMLElement {
+            constructor() {
+                super();
+                const templateContent = document
+                    .getElementById('Farbschema')
+                    .content
+                    .cloneNode(true);
+                this.attachShadow({ mode: 'open' })
+                    .appendChild(templateContent);
+
+                this.colorMap = {
+                    'btn-blau': '43, 103, 198',
+                    'btn-orange': '190, 132, 43',
+                    'btn-türkis': '43, 193, 134',
+                    'btn-grün': '142, 206, 44',
+                    'btn-gelb': '235, 235, 46',
+                    'btn-lila': '176, 41, 176',
+                };
+            }
+            connectedCallback() {
+                this.shadowRoot.querySelectorAll('button').forEach((button) => {
+                    button.addEventListener('click', (event) => this.changeColor(event));
+                    //console.log(`EventListner gesetzt für: ${button.id}`)
+                });
+            }
+            disconnectedCallback() {
+                this.shadowRoot.querySelectorAll('button').forEach((button) => {
+                    button.removeEventListener('click', (event) => this.changeColor(event));
+                    //console.log(`EventListner entfernt für: ${button.id}`)
+                }
+            )};
+
+            changeColor(event) {
+                const buttonId = event.target.id;
+                const newColor = this.colorMap[buttonId];
+                if (newColor) {
+                    document.documentElement.style.setProperty('--farbe', newColor);
+                    console.log(`Farbe geändert zu: ${newColor}`);
+                } else {
+                    console.warn('Keine Farbe für diesen Button definiert.');
+                }
+            }
+            
+        }
+        customElements.define('ce-farbschema', Farbschema);
+    </script>
+</body>
+</html>

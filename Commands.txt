@@ -1,0 +1,26 @@
+Deno ausführen:
+cd ~/deno && deno run --allow-net --allow-read --allow-run router.ts
+
+Anpassen der Raspberry PI IP im .git:
+$ git remote set-url pi ssh://anton@192.168.178.77/home/anton/mobs.git
+
+Prüfen der aktuellen IP im .git Ordner:
+$ git remote -v
+
+
+
+Archiv:
+----------------------------------------------------------------------------------------
+async function flashDot() {
+    const command = new Deno.Command('python3', {
+        args: ['python/flashDot.py'],
+    });
+    const { code, stdout, stderr } = await command.output();
+}
+app.use(async (ctx, next) => {
+    flashDot();
+    await next();
+    if (ctx.response.status === 404) {
+        ctx.response.status = 403;
+    }
+});

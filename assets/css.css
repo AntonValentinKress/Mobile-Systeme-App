@@ -1,0 +1,50 @@
+:root {
+    --farbe: 142, 206, 44;
+    --rotation: 0;
+}
+
+html {
+    height: 100vh;
+    width: 100vw;
+    box-sizing: border-box;
+    background-color: #202020;
+    position: relative;
+    overflow: auto;
+    z-index: -2;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+    padding: 0px;
+    margin: 0px;
+}
+
+div.Hintergrund-Text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: -1;
+    font-size: 13vw;
+    color: rgba(var(--farbe),0.6);
+    filter: blur(3px);
+    white-space: wrap;
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+
+}
+
+/*Google Icons - Lokal*/
+@font-face {
+    font-family: 'Material Icons';
+    font-style: normal;
+    font-weight: 400;
+    src: url('./MaterialIcons-Regular.ttf') format('truetype');
+}
+.material-icons {
+    font-family: 'Material Icons';
+    display: inline-block;
+    text-rendering: optimizeLegibility;
+    text-align: center;
+}
+

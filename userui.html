@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="de">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Mobile Systeme &ndash; Anton Kreß</title>
+
+    <meta name="description" content="MOBS Projekt"/>
+    <meta name="author" content="Anton Kreß"/>
+
+    <link rel="Stylesheet" href="assets/stylesheet.css"/>
+
+    <style>
+        /*Stylesheet extern gepflegt*/
+    </style>
+</head>
+
+<body>
+    <div class="Hintergrund-Text">
+        MOBS MachineTools
+    </div>
+
+    <hauptmenue></hauptmenue>
+
+    <template id="Hauptmenü">
+    <div style="height: 100vh; width: 100vw; display: flex; margin: 0px;">
+        <div class="HomeButtonField">
+            <button class="homebox" id="HauptmenüButton"><span class="material-icons">home</span></button>
+        </div>
+        <div class="FunctionGridField">
+            <button class="box" id="RotationButton"><span class="material-icons">build</span></button>
+            <button class="box" id="MaschinendatenButton"><span class="material-icons">query_stats</span></button>
+            <button class="box"><span class="material-icons">format_list_bulleted</span></button>
+            <button class="box" id="FarbschemaButton"><span class="material-icons"">settings</span></button>
+            <button class="box"><span class="material-icons">shower</span></button>
+            <button class="box" id="SupportButton"><span class="material-icons">support_agent</span></button>
+            <button class="box"><span class="material-icons">help</span></button>
+            <button class="box"><span class="material-icons">lock</span></button>
+            <button class="box"><span class="material-icons">power_settings_new</span></button>
+        </div>
+    </div>
+    </template>
+
+    <template id="Farbschema">
+    <div style="height: 100vh; width: 100vw; display: flex;">
+        <div class="HomeButtonField">
+            <button class="homebox" id="HauptmenüButton"><span class="material-icons">arrow_back</span></button>
+        </div>
+        <div class="ColorPicker">
+            <div class="Überschrift">
+                Bitte wählen Sie ein Farbschema.
+            </div>
+            <div class="FarbschemaField">
+                <button class="colorbox-blau" id="btn-blau"></button>
+                <button class="colorbox-orange" id="btn-orange"></button>
+                <button class="colorbox-türkis" id="btn-türkis"></button>
+                <button class="colorbox-grün" id="btn-grün"></button>
+                <button class="colorbox-gelb" id="btn-gelb"></button>
+                <button class="colorbox-lila" id="btn-lila"></button>
+            </div>
+        </div>
+    </div>
+    </template>
+
+    <template id="Maschinendaten">
+        <div style="height: 100%; width: 100%; display: flex;">
+            <div class="HomeButtonField">
+                <button class="homebox" id="HauptmenüButton"><span class="material-icons">arrow_back</span></button>
+            </div>
+            <div class="Daten">
+                <div class="Überschrift">
+                    Maschinendaten
+                </div>
+                <div class="DataGrid">
+                    <div class="LabelBox">Temperatur</div>
+                    <div class="DataBox" id="Temperatur">?</div>
+                    <div class="LabelBox">Luftdruck</div>
+                    <div class="DataBox" id="Luftdruck">?</div>
+                    <div class="LabelBox">Luftfeuchtigkeit</div>
+                    <div class="DataBox" id="Luftfeuchtigkeit">?</div>
+                </div>     
+            </div>
+        </div>
+    </template>
+
+    <template id="Rotation">
+        <div style="height: 100%; width: 100%; display: flex;">
+            <div class="HomeButtonField">
+                <button class="homebox" id="HauptmenüButton"><span class="material-icons">arrow_back</span></button>
+            </div>
+            <div class="Daten">
+                <div class="Überschrift">
+                    Werkzeugposition
+                </div>
+                <div class="Rotation">
+                    <div class="RotationBox">
+                        <span class="material-icons">change_history</span>
+                    </div>
+                </div>
+                <div class="RotationGrid">
+                    <div class="Label">Yaw:
+                        <div class="Value" id="Yaw">?</div>
+                    </div>
+                    <div class="Label">Pitch:
+                        <div class="Value" id="Pitch">?</div>
+                    </div>
+                    <div class="Label">Roll:
+                        <div class="Value" id="Roll">?</div>
+                    </div>
+                </div>     
+            </div>
+        </div>
+    </template>
+
+    <template id="Support">
+        <div style="height: 100%; width: 100%; display: flex;">
+            <div class="HomeButtonField">
+                <button class="homebox" id="HauptmenüButton"><span class="material-icons">arrow_back</span></button>
+            </div>
+            <div class="SupportBox">
+                <div class="CallingSupport">
+                    Calling Support...
+                </div>
+            </div>
+        </div>
+    </template>
+
+    <script src="assets/scripts.js" type="text/javascript"></script>
+</body>
+</html>
