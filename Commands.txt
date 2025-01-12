@@ -2,7 +2,7 @@ Deno ausführen:
 cd ~/deno && deno run --allow-net --allow-read --allow-run router.ts
 
 Anpassen der Raspberry PI IP im .git:
-$ git remote set-url pi ssh://anton@192.168.178.77/home/anton/mobs.git
+$ git remote set-url pi ssh://anton@XXX.XXX.XXX.XXX/home/anton/mobs.git
 
 Prüfen der aktuellen IP im .git Ordner:
 $ git remote -v
